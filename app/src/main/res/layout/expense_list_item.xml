@@ -1,62 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#E5F2C9">
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/txtSpace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="8pt" />
+        android:textSize="2pt" />
     <TableRow>
-        <TextView
-            android:id="@+id/txtExpense"
-            android:text="@string/expense_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10pt"
-            android:textStyle="bold"/>
         <TextView
             android:id="@+id/txtShowExpense"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10pt"
-            android:layout_marginLeft="20dp"/>
+            android:textSize="11pt"
+            android:textStyle="bold"
+            android:textColor="#C9E4CA"
+            android:layout_marginLeft="5dp"/>
     </TableRow>
     <TableRow>
-        <TextView
-            android:id="@+id/txtValue"
-            android:text="@string/value_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10pt"
-            android:textStyle="bold"/>
         <TextView
             android:id="@+id/txtShowValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="10pt"
+            android:textColor="#FFF"
             android:layout_marginLeft="20dp"/>
     </TableRow>
     <TableRow>
-        <TextView
-            android:id="@+id/txtDate"
-            android:text="@string/date_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10pt"
-            android:textStyle="bold"/>
         <TextView
             android:id="@+id/txtShowDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="10pt"
+            android:textColor="#FFF"
             android:layout_marginLeft="20dp"/>
     </TableRow>
     <TextView
         android:id="@+id/txtSpace2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="8pt" />
+        android:textSize="4pt" />
 
 </TableLayout>

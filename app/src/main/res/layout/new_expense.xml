@@ -1,39 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#86D69A" android:padding="15dp">
+    android:background="#FFF" android:padding="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/expenseName"
-        android:id="@+id/tvExpenseName"
-        android:textColor="#FFF"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="25dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:id="@+id/etExpenseName"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/tvExpenseName"
-        android:layout_alignStart="@+id/tvExpenseName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/value"
-        android:id="@+id/tvValue"
-        android:textColor="#FFF"
-        android:layout_marginTop="17dp"
-        android:layout_below="@+id/etExpenseName"
-        android:layout_alignStart="@+id/etExpenseName" />
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="15dp"
+        android:hint="@string/expenseName"
+        android:textStyle="italic"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,20 +20,32 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/etValue"
-        android:layout_marginTop="11dp"
-        android:layout_below="@+id/tvValue"
-        android:layout_alignStart="@+id/tvValue" />
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/etExpenseName"
+        android:hint="@string/value"
+        android:textStyle="italic"/>
 
-    <TextView
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/etDate"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/etValue"
+        android:hint="@string/date"
+        android:textStyle="italic"/>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/date"
-        android:id="@+id/tvDate"
+        android:text="@string/choose_button"
+        android:id="@+id/btChoose"
+        android:background="@drawable/roundedbutton"
         android:textColor="#FFF"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/etValue"
-        android:layout_alignStart="@+id/etValue" />
+        android:padding="4dp"
+        android:layout_alignBottom="@+id/etDate"
+        android:layout_alignEnd="@+id/etExpenseName" />
 
     <Button
         android:layout_width="wrap_content"
@@ -67,24 +58,5 @@
         android:layout_marginTop="64dp"
         android:layout_below="@+id/etDate"
         android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etDate"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/tvDate"
-        android:layout_alignStart="@+id/tvDate" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_button"
-        android:id="@+id/btChoose"
-        android:background="@drawable/roundedbutton"
-        android:textColor="#FFF"
-        android:padding="4dp"
-        android:layout_alignBottom="@+id/etDate"
-        android:layout_alignEnd="@+id/etDate" />
 
 </RelativeLayout>

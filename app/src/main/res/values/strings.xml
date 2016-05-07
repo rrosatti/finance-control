@@ -4,10 +4,12 @@
 
     <string name="months_title">Months</string>
 
-    <!-- New expenseName menu -->
-    <string name="expenseName">Expense</string>
-    <string name="value">Value</string>
-    <string name="date">Date</string>
+    <!-- Hint -->
+    <string name="expenseName">expense</string>
+    <string name="value">value</string>
+    <string name="date">date</string>
+
+    <!-- Button -->
     <string name="confirm">Confirm</string>
     <string name="choose_button">Choose Date</string>
 

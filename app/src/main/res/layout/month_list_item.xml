@@ -7,7 +7,7 @@
         android:layout_gravity="center_horizontal">
         <TextView
             android:id="@+id/txtMonth"
-            android:textColor="#498467"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="10pt"
@@ -16,7 +16,7 @@
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/txtTotalByMonth"
-            android:textColor="#E5F2C9"
+            android:textColor="@color/colorAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="10pt"
