@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">FinanceControl</string>
+    <string name="app_name">Finance Control</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Action Bar Titles -->
+    <string name="new_expense_tittle">New Expense</string>
     <string name="months_title">Months</string>
+    <string name="expenses_title">Expenses</string>
 
     <!-- Hint -->
     <string name="expenseName">expense</string>

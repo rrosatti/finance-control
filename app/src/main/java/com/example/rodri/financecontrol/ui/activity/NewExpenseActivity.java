@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.rodri.financecontrol.database.ExpensesDataSource;
 import com.example.rodri.financecontrol.R;
+import com.example.rodri.financecontrol.util.Util;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -19,13 +21,15 @@ import java.util.TimeZone;
 /**
  * Created by rodri on 2/1/2016.
  */
-public class NewExpenseActivity extends Activity {
+public class NewExpenseActivity extends AppCompatActivity {
 
     private ExpensesDataSource dataSource;
 
     protected void onCreate(Bundle savedInstanceState){
+        Util.setFullScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_expense);
+        setTitle(R.string.new_expense_tittle);
 
         dataSource = new ExpensesDataSource(this);
         dataSource.open();
