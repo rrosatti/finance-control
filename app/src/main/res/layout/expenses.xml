@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Total: "
+        android:textSize="8pt"
         android:id="@+id/txtTotal"
         android:textColor="#000"
         android:visibility="invisible"

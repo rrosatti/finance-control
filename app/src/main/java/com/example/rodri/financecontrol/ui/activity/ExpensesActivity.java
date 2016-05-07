@@ -1,7 +1,8 @@
 package com.example.rodri.financecontrol.ui.activity;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.database.SQLException;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,8 +25,17 @@ import java.util.List;
  */
 public class ExpensesActivity extends AppCompatActivity {
 
-    private ExpensesDataSource datasource;
-    private ExpenseAdapter adpExpense;
+    private Button newExpense;
+    private TextView txtTotal;
+    private ListView expensesListView;
+
+    private ExpensesDataSource dataSource;
+    private ExpenseAdapter expenseAdapter;
+    private Typeface typeface;
+    private List<Expense> expenses;
+
+    private int month_id;
+    private double total = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -33,31 +43,21 @@ public class ExpensesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.expenses);
         setTitle(R.string.expenses_title);
-
-        String[] months = {"January", "February", "March", "April", "May", "June",
-                            "July", "August", "September", "October", "November", "December"};
-        //final String[] months = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
-        //        "Setembro", "Outubro", "Novembro", "Dezembro" };
+        initialize();
 
 
-        final int month_id = getIntent().getIntExtra("month_id", 0);
+        try {
+            dataSource.open();
 
-        //final int month_id = getIntent().getExtras().getInt("month_id");
-        //final String month_name = getIntent().getExtras().getString("month_name");
+            expenses = dataSource.getAllExpenses(month_id);
 
-        //TextView tvMonthName = (TextView)findViewById(R.id.tvExpenses);
-        //tvMonthName.setText(months[month_id - 1]);
+            dataSource.close();
 
-        TextView txtTotal = (TextView)findViewById(R.id.txtTotal);
-        double total = 0.0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        datasource = new ExpensesDataSource(this);
-        datasource.open();
-
-        ListView allExpenses = (ListView)findViewById(R.id.listExpenses);
-        List<Expense> values = datasource.getAllExpenses(month_id);
-
-        for (Expense value : values){
+        for (Expense value : expenses){
             total += value.getValue();
         }
 
@@ -66,11 +66,9 @@ public class ExpensesActivity extends AppCompatActivity {
         txtTotal.setText("Total: R$ " + formatter.format(total));
         txtTotal.setVisibility(View.VISIBLE);
 
-        //final ExpenseAdapter adpExpense;
-        adpExpense = new ExpenseAdapter(ExpensesActivity.this, 0, values);
-        allExpenses.setAdapter(adpExpense);
+        expenseAdapter = new ExpenseAdapter(ExpensesActivity.this, 0, expenses, typeface);
+        expensesListView.setAdapter(expenseAdapter);
 
-        Button newExpense = (Button)findViewById(R.id.btAddExpense);
 
         newExpense.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +83,19 @@ public class ExpensesActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void initialize() {
+        month_id = getIntent().getIntExtra("month_id", 0);
+        dataSource = new ExpensesDataSource(this);
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/AutourOne-Regular.otf");
+
+        txtTotal = (TextView)findViewById(R.id.txtTotal);
+        expensesListView = (ListView)findViewById(R.id.listExpenses);
+        newExpense = (Button)findViewById(R.id.btAddExpense);
+
+        newExpense.setTypeface(typeface);
+        txtTotal.setTypeface(typeface);
     }
 
 

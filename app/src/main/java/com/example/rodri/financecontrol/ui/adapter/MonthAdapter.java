@@ -3,6 +3,7 @@ package com.example.rodri.financecontrol.ui.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,13 +31,15 @@ public class MonthAdapter extends ArrayAdapter<String> {
     private ExpensesDataSource expensesDataSource;
     private List<Expense> lExpense;
 
+    private Typeface typeface;
 
-
-    public MonthAdapter(Activity activity, int textViewResourceId, String[] _lMonth){
+    public MonthAdapter(Activity activity, int textViewResourceId, String[] _lMonth, Typeface typeface){
         super(activity, textViewResourceId, _lMonth);
         try {
             this.activity = activity;
             this.lMonth = _lMonth;
+            this.typeface = typeface;
+
 
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         } catch (Exception e){
@@ -91,6 +94,8 @@ public class MonthAdapter extends ArrayAdapter<String> {
 
             holder.display_month.setText(month);
             holder.display_total.setText("R$ " + String.valueOf(formatter.format(total)));
+            holder.display_month.setTypeface(typeface);
+            holder.display_total.setTypeface(typeface);
 
         } catch (Exception e){
             Log.e("Error", "Error" + e);

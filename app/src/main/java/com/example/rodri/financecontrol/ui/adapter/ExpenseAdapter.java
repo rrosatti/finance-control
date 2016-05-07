@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,15 +30,16 @@ public class ExpenseAdapter extends ArrayAdapter<Expense> {
     private static LayoutInflater inflater = null;
 
     private ExpensesDataSource dataSource;
+    private Typeface typeface;
 
-    public ExpenseAdapter(Activity activity, int textViewResourceId, List<Expense> _lExpense){
+    public ExpenseAdapter(Activity activity, int textViewResourceId, List<Expense> _lExpense, Typeface typeface){
         super(activity, textViewResourceId, _lExpense);
         try {
             this.activity = activity;
             this.lExpense = _lExpense;
+            this.typeface = typeface;
 
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         } catch (Exception e){
 
         }
@@ -84,6 +86,10 @@ public class ExpenseAdapter extends ArrayAdapter<Expense> {
             holder.display_expense.setText(lExpense.get(position).getExpenseName());
             holder.display_value.setText("R$ " + String.valueOf(formatter.format(lExpense.get(position).getValue())));
             holder.display_date.setText(lExpense.get(position).getDate());
+
+            holder.display_date.setTypeface(typeface);
+            holder.display_expense.setTypeface(typeface);
+            holder.display_value.setTypeface(typeface);
 
         } catch (Exception e){
             Log.e("Error: ", "Error: " + e);

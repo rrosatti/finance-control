@@ -2,6 +2,7 @@ package com.example.rodri.financecontrol.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private MonthAdapter monthAdapter;
+    private Typeface typeface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.months_title);
-
 
         final ListView monthList = (ListView) findViewById(R.id.listMonth);
         String[] months = {"January", "February", "March", "April", "May", "June",
@@ -40,12 +41,9 @@ public class MainActivity extends AppCompatActivity {
             list.add(months[i]);
         }
 
-        //final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-        //monthList.setAdapter(adapter);
-
-        monthAdapter = new MonthAdapter(MainActivity.this, 0, months);
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/AutourOne-Regular.otf");
+        monthAdapter = new MonthAdapter(MainActivity.this, 0, months, typeface);
         monthList.setAdapter(monthAdapter);
-
 
         monthList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -54,10 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent expensesScreen = new Intent(MainActivity.this, ExpensesActivity.class);
                 expensesScreen.putExtra("month_id", position+1);
-                /*Bundle extras = new Bundle();
-                extras.putInt("month_id", position + 1);
-                extras.putString("month_name", months[position]);
-                expensesScreen.putExtras(extras);*/
                 startActivity(expensesScreen);
 
             }
