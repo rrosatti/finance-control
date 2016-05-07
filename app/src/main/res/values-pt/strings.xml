@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FinanceControl</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="months_title">Meses</string>
+
+    <!-- New expenseName menu -->
+    <string name="expenseName">Nome</string>
+    <string name="value">Valor</string>
+    <string name="date">Data</string>
+    <string name="confirm">Confirmar</string>
+    <string name="choose_button">Escolher Data</string>
+
+    <!-- Expenses menu -->
+    <string name="expenses">Gastos Mensais</string>
+    <string name="new_expense">Novo Gasto</string>
+
+    <!-- Expense's items -->
+    <string name="expense_item">&#160;Gasto:&#160;</string>
+    <string name="value_item">&#160;Valor: </string>
+    <string name="date_item">&#160;Data: </string>
+
+</resources>
