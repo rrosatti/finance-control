@@ -98,11 +98,9 @@ public class ExpenseAdapter extends ArrayAdapter<Expense> {
         vi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                //Toast.makeText(parent.getContext(), "view clicked: " + expense.getExpenseName(), Toast.LENGTH_SHORT).show();
-
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                builder.setTitle("Remove item?");
+                builder.setTitle(R.string.remove_item);
                 builder.setCancelable(true);
                 builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogInterface, int id) {

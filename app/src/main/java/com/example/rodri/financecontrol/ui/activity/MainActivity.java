@@ -19,6 +19,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView monthList;
+    private ArrayList<String> monthsArray;
+
     private MonthAdapter monthAdapter;
     private Typeface typeface;
 
@@ -28,20 +31,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.months_title);
+        initialize();
 
-        final ListView monthList = (ListView) findViewById(R.id.listMonth);
-        String[] months = {"January", "February", "March", "April", "May", "June",
-                            "July", "August", "September", "October", "November", "December"};
-        //final String[] months = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
-        //                    "Setembro", "Outubro", "Novembro", "Dezembro" };
+        String[] months = getResources().getStringArray(R.array.months);
 
-
-        final ArrayList<String> list = new ArrayList<>();
-        for (int i=0; i<months.length; i++){
-            list.add(months[i]);
-        }
-
-        typeface = Typeface.createFromAsset(getAssets(), "fonts/AutourOne-Regular.otf");
         monthAdapter = new MonthAdapter(MainActivity.this, 0, months, typeface);
         monthList.setAdapter(monthAdapter);
 
@@ -60,17 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void initialize() {
+        typeface = Typeface.createFromAsset(getAssets(), "fonts/AutourOne-Regular.otf");
+        monthList = (ListView) findViewById(R.id.listMonth);
+    }
+
     @Override
     public void onResume(){
         super.onResume();
         monthAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
 }
