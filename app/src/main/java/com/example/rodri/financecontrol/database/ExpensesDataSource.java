@@ -63,8 +63,20 @@ public class ExpensesDataSource {
     public List<Expense> getAllExpenses(int month_id){
         List<Expense> expenses = new ArrayList<>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXPENSES, allColumns,
-                                                                        "month_id = " + month_id, null, null, null, null);
+        /*Cursor cursor = database.query(MySQLiteHelper.TABLE_EXPENSES,
+                allColumns,
+                "month_id = " + month_id,
+                allColumns,
+                MySQLiteHelper.COLUMN_EXPENSE + ", " + MySQLiteHelper.COLUMN_DATE + ", " + MySQLiteHelper.COLUMN_VALUE,
+                MySQLiteHelper.COLUMN_DATE + " ASC",
+                null);*/
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXPENSES,
+                allColumns,
+                "month_id = " + month_id,
+                null,
+                null,
+                null,
+                MySQLiteHelper.COLUMN_VALUE + " ASC");
         cursor.moveToFirst();
 
         while(!cursor.isAfterLast()){
@@ -84,6 +96,7 @@ public class ExpensesDataSource {
         expense.setValue(cursor.getDouble(2));
         expense.setDate(cursor.getString(3));
         expense.setMonth_id(cursor.getInt(4));
+        System.out.println(expense.getExpenseName());
         return expense;
     }
 
